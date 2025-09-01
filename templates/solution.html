@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solution - CryptoLearn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <div class="brand">CryptoLearn</div>
+            <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('solve_problem') }}">Solve</a>
+            </nav>
+        </header>
+
+        <main class="container">
+            <section class="card result-card">
+                <div class="result-header">
+                    <h2>Result</h2>
+                    <div class="meta">{{ algorithms[algorithm].name }} {% if mode %} • {{ mode|capitalize }}{% endif %}</div>
+                </div>
+
+                {% if result_summary %}
+                <div class="summary-box">{{ result_summary }}</div>
+                {% endif %}
+
+                <div class="grid">
+                    <div>
+                        <h4>Input</h4>
+                        <div class="solution-box">{{ plaintext }}</div>
+                        <h4>Key</h4>
+                        <div class="solution-box">{{ key }}</div>
+                    </div>
+                    <div>
+                        <h4>Output</h4>
+                        <div class="solution-box">{{ solution }}</div>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <a class="small-link" href="{{ url_for('solve_problem') }}">Solve another</a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <small>Preserves case and non-letter characters — educational use only.</small>
+        </footer>
+    </div>
+</body>
+</html>

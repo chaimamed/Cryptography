@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solve Cryptography Problem</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <div class="brand">CryptoLearn</div>
+            <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('solve_problem') }}">Solve</a>
+            </nav>
+        </header>
+
+        <main class="container">
+            <section class="hero">
+                <h1>Interactive Cryptography Playground</h1>
+                <p class="muted">Choose an algorithm, enter text and key, then encrypt or decrypt. Helpful hints show the expected key format.</p>
+            </section>
+
+            <section class="card form-card">
+                <form id="solveForm" action="{{ url_for('solve_problem') }}" method="post">
+                    <div class="row">
+                        <label for="algorithm">Algorithm</label>
+                        <select name="algorithm" id="algorithm">
+                            {% for key, info in algorithms.items() %}
+                            <option value="{{ key }}">{{ info.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <label for="mode">Mode</label>
+                        <select name="mode" id="mode">
+                            <option value="encrypt">Encrypt</option>
+                            <option value="decrypt">Decrypt</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <label for="plaintext">Text</label>
+                        <textarea id="plaintext" name="plaintext" rows="4" placeholder="Enter plaintext or ciphertext here" required></textarea>
+                    </div>
+
+                    <div class="row">
+                        <label for="key">Key <small id="key-hint" class="muted">(depends on algorithm)</small></label>
+                        <input type="text" id="key" name="key" placeholder="Key">
+                    </div>
+
+                    <div class="actions">
+                        <button type="submit" class="btn primary">Run</button>
+                        <button type="button" id="clearBtn" class="btn">Clear</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="card info-card" id="algoInfo">
+                <h3 id="algoName">Algorithm</h3>
+                <p id="algoDesc">Select an algorithm to see a short explanation and the expected key format.</p>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <small>Built for learning — preserves case and non-letter characters.</small>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

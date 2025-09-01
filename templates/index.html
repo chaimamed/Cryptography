@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CryptoLearn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="page">
+        <header class="topbar">
+            <div class="brand">CryptoLearn</div>
+            <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('solve_problem') }}">Solve</a>
+            </nav>
+        </header>
+
+        <main class="container">
+            <section class="hero">
+                <h1>Learn Cryptography by Doing</h1>
+                <p class="muted">Interactive examples for classic ciphers: Caesar, Substitution, and Vigenère. Clear explanations and step-by-step behavior to help students learn.</p>
+                <div class="cta">
+                    <a class="btn primary" href="{{ url_for('solve_problem') }}">Try the Playground</a>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="feature">
+                    <h3>Preserve case</h3>
+                    <p>All implemented ciphers keep uppercase and lowercase letters unchanged except for the transformation.</p>
+                </div>
+                <div class="feature">
+                    <h3>Non-letters preserved</h3>
+                    <p>Punctuation and spaces are not transformed, making outputs easier to read.</p>
+                </div>
+                <div class="feature">
+                    <h3>Educational hints</h3>
+                    <p>Key format hints and short descriptions are included to guide learning.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <small>© CryptoLearn — For education and practice <a href="https://ameurmeddahchaima.vercel.app/" class="author">Ameur Meddah Chaima</a></small>
+        </footer>
+    </div>
+</body>
+</html>
